@@ -8,9 +8,6 @@ Simple [arp-scan][arp-scan] wrapper module
 
 Tested in Mac OSX 10.9.5 and Raspbian GNU/Linux 7 (wheezy).
 
-NOTE:
-When running on Mac you don't need to `sudo` the command, you do have to `sudo` on your Raspberry Pi.
-
 ## Getting Started
 First you need to install `arp-scan` if is not already installed.
 
@@ -24,7 +21,10 @@ On Debian:
 sudo apt-get install arp-scan
 ```
 
-Install the module with: `npm install arpscanner`
+Install the module with: `npm install arpscanner`.
+
+If you get this error when running this module, you might have to `sudo` the command:
+>pcap_lookupdev: no suitable device found
 
 
 
