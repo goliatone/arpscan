@@ -21,6 +21,9 @@
       "url": "https://github.com/goliatone/arpscan/blob/master/LICENSE-MIT"
     }
   ],
+  "bin":{
+    "arpscan" : "./bin/arpscan"
+  },
   "main": "lib/arpscan",
   "engines": {
     "node": ">= 0.10.0"
