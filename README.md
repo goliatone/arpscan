@@ -87,6 +87,7 @@ Parse signature metadata
 Ending arp-scan 1.9: 256 hosts scanned in 1.861 seconds (137.56 hosts/sec). 7 responded
 
 ## Release History
+- Version: 0.0.2 2015-03-29
 - Version: 0.0.1 2015-03-29
 
 ## License
