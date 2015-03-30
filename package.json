@@ -1,0 +1,38 @@
+{
+  "name": "arpscanner",
+  "description": "Simple arp-scan utility",
+  "version": "0.0.1",
+  "homepage": "https://github.com/goliatone/arpscanner",
+  "author": {
+    "name": "goliatone",
+    "email": "hello@goliatone.com",
+    "url": "http://goliatone.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goliatone/arpscanner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goliatone/arpscanner/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/goliatone/arpscanner/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/arpscanner",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt": "~0.4.5"
+  },
+  "keywords": []
+}
