@@ -66,6 +66,4 @@ npm-debug.log
 node_modules
 
 #FOR NOW!!
-test
-Gruntfile.js
 lib/macscan.js
