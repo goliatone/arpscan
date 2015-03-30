@@ -34,5 +34,15 @@
     "grunt-contrib-watch": "~0.2.0",
     "grunt": "~0.4.5"
   },
-  "keywords": []
+  "keywords": [
+    "arp",
+    "arp-scan",
+    "security",
+    "networking"
+  ],
+  "dependencies": {
+    "grunt-cli": "^0.1.13",
+    "gextend": "^0.1.6",
+    "commander": "^2.7.1"
+  }
 }
