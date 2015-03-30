@@ -81,7 +81,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 
 ## TODO
-Parse signature metadata
+- Save to file, make default
+- Parse signature metadata
+
 
 >890 packets received by filter, 0 packets dropped by kernel
 Ending arp-scan 1.9: 256 hosts scanned in 1.861 seconds (137.56 hosts/sec). 7 responded
