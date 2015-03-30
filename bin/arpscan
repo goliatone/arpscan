@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var scanner = require('../lib/arpscanner');
+
+var program = require('commander');
+
+var pck = require('../package.json');
+
+program
+    .version(pck.version)
+    .parse(process.argv);
+
+scanner(function result(err, data){
+    if(err){
+        process.stderr.write(err + '\n');
+    }
+
+    process.stdout.write(JSON.stringify(data) + '\n');
+});
+
+
