@@ -33,6 +33,7 @@ _(Coming soon)_
 
 ## Examples
 
+To use the module programmatically:
 
 ```javascript
 var arpscanner = require('arpscanner');
@@ -68,6 +69,12 @@ The output should be something similar to:
     vendor: 'Hi-flying electronics technology Co.,Ltd (DUP: 2)',
     timestamp: 1427686747854 } ]
 ```
+
+The module also provides a `cli` interface:
+```
+$ arpscan
+```
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
