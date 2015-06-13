@@ -46,6 +46,7 @@
   "dependencies": {
     "grunt-cli": "^0.1.13",
     "gextend": "^0.1.6",
-    "commander": "^2.7.1"
+    "commander": "^2.7.1",
+    "sudo": "^1.0.3"
   }
 }
