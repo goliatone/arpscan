@@ -81,7 +81,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 
 ## TODO
-Parse signature metadata
+- Parse signature metadata
+- Handle `arp-scan` not available in machine!
 
 >890 packets received by filter, 0 packets dropped by kernel
 Ending arp-scan 1.9: 256 hosts scanned in 1.861 seconds (137.56 hosts/sec). 7 responded
@@ -93,3 +94,38 @@ Ending arp-scan 1.9: 256 hosts scanned in 1.861 seconds (137.56 hosts/sec). 7 re
 ## License
 Copyright (c) 2015 goliatone  
 Licensed under the MIT license.
+
+
+
+MAC os output:
+
+Interface: en0, datalink type: EN10MB (Ethernet)
+Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/)
+192.168.1.1 48:f8:b3:1b:57:84   Cisco-Linksys, LLC
+192.168.1.143   e8:8d:28:19:68:47   Apple (DUP: 1)
+192.168.1.132   b8:27:eb:81:56:02   Raspberry Pi Foundation (DUP: 1)
+192.168.1.140   b8:e9:37:11:d5:5c   Sonos, Inc. (DUP: 1)
+192.168.1.125   f0:08:f1:5e:65:10   Samsung Electronics Co.,Ltd (DUP: 1)
+192.168.1.132   b8:27:eb:81:56:02   Raspberry Pi Foundation (DUP: 2)
+192.168.1.140   b8:e9:37:11:d5:5c   Sonos, Inc. (DUP: 2)
+
+890 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.9: 256 hosts scanned in 1.861 seconds (137.56 hosts/sec). 7 responded
+
+
+Raspberry Pi B
+Interface: eth0, datalink type: EN10MB (Ethernet)
+Starting arp-scan 1.8.1 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/)
+192.168.1.125   f0:08:f1:5e:65:10   (Unknown)
+192.168.1.140   b8:e9:37:11:d5:5c   (Unknown)
+192.168.1.143   e8:8d:28:19:68:47   (Unknown)
+192.168.1.145   78:31:c1:b8:05:12   (Unknown)
+192.168.1.146   00:19:9d:68:65:52   VIZIO, Inc.
+192.168.1.131   b8:e9:37:5c:0f:c0   (Unknown)
+192.168.1.138   b8:e9:37:5c:10:36   (Unknown)
+192.168.1.148   ac:cf:23:3f:9b:fc   (Unknown)
+192.168.1.1 48:f8:b3:1b:57:84   (Unknown)
+192.168.1.144   ac:cf:23:39:bb:c2   (Unknown)
+
+11 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.8.1: 256 hosts scanned in 4.393 seconds (58.27 hosts/sec). 10 responded
