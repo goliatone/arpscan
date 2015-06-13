@@ -1,7 +1,7 @@
 {
   "name": "arpscan",
   "description": "Simple arp-scan utility",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "homepage": "https://github.com/goliatone/arpscan",
   "author": {
     "name": "goliatone",
@@ -21,8 +21,8 @@
       "url": "https://github.com/goliatone/arpscan/blob/master/LICENSE-MIT"
     }
   ],
-  "bin":{
-    "arpscan" : "./bin/arpscan"
+  "bin": {
+    "arpscan": "./bin/arpscan"
   },
   "main": "lib/arpscanner",
   "engines": {
