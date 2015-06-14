@@ -1,4 +1,4 @@
-# arpscanner
+# arpscan
 
 Simple [arp-scan][arp-scan] wrapper module
 
@@ -24,7 +24,7 @@ On Debian:
 sudo apt-get install arp-scan
 ```
 
-Install the module with: `npm install arpscanner`
+Install the module with: `npm install arpscan`
 
 
 
@@ -36,7 +36,7 @@ _(Coming soon)_
 To use the module programmatically:
 
 ```javascript
-var arpscanner = require('arpscanner');
+var arpscanner = require('arpscan');
 arpscanner(onResult);
 
 function onResult(err, data){
