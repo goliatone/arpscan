@@ -45,6 +45,23 @@ function onResult(err, data){
 }
 ```
 
+To use the module programmatically with promises:
+```javascript
+var arpscanner = require('arpscan/promise');
+arpscanner()
+    .then(onResult);
+    .catch(onError);
+
+function onResult(data) {
+    console.log(data);
+}
+
+function onError(err) {
+    throw err;
+}
+```
+
+
 The output should be something similar to:
 
 ```javascript
@@ -98,7 +115,7 @@ Licensed under the MIT license.
 
 
 MAC os output:
-
+```
 Interface: en0, datalink type: EN10MB (Ethernet)
 Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/)
 192.168.1.1 48:f8:b3:1b:57:84   Cisco-Linksys, LLC
@@ -111,9 +128,10 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 
 890 packets received by filter, 0 packets dropped by kernel
 Ending arp-scan 1.9: 256 hosts scanned in 1.861 seconds (137.56 hosts/sec). 7 responded
+```
 
-
-Raspberry Pi B
+Raspberry Pi B output:
+```
 Interface: eth0, datalink type: EN10MB (Ethernet)
 Starting arp-scan 1.8.1 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/)
 192.168.1.125   f0:08:f1:5e:65:10   (Unknown)
@@ -129,3 +147,4 @@ Starting arp-scan 1.8.1 with 256 hosts (http://www.nta-monitor.com/tools/arp-sca
 
 11 packets received by filter, 0 packets dropped by kernel
 Ending arp-scan 1.8.1: 256 hosts scanned in 4.393 seconds (58.27 hosts/sec). 10 responded
+```

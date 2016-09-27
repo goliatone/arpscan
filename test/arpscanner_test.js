@@ -1,6 +1,7 @@
 'use strict';
 
 var arpscanner = require('../lib/arpscanner.js');
+var arpscanner_promise = require("../lib/arpscanner-promise.js");
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -33,4 +34,16 @@ exports['awesome'] = {
     test.equal(arpscanner.awesome(), 'awesome', 'should be awesome.');
     test.done();
   },
+  "promise": function (test) {
+    test.expect(1);
+    arpscanner_promise()
+        .then(out => {
+            test.ok(Array.isArray(out), "output should be array");
+            test.done();
+        })
+        .catch(err => {
+            test.ok(false, err);
+            test.done();
+        });
+  }
 };
