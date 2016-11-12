@@ -2,7 +2,7 @@
 
 'use strict';
 
-var scanner = require('../lib/arpscanner-promise');
+var scanner = require('../lib/arpscanner').promisify();
 
 var program = require('commander');
 
@@ -27,9 +27,8 @@ program
     .parse(process.argv);
 
 scanner({
-    verbose: program.verbose,
-    interface: program.interface,
     verbose: !!program.verbose,
+    interface: program.interface
 }).then(function(data){
     process.stdout.write(JSON.stringify(data) + '\n');
 }).catch(function(err){
