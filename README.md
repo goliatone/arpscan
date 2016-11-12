@@ -1,6 +1,6 @@
 # arpscan
 
-Simple [arp-scan][arp-scan] wrapper module
+Simple [arp-scan][arp-scan] wrapper module.
 
 >arp-scan sends ARP (Address Resolution Protocol) queries to the specified targets, and displays any responses that are received. It allows any part of the outgoing ARP packets to be changed, allowing the behavior of targets to non-standard ARP packets to be examined. The IP address and hardware address of received packets are displayed, together with the vendor details. These details are obtained from the IEEE OUI and IAB listings, plus a few manual entries. It includes arp-fingerprint, which allows a system to be fingerprinted based on how it responds to non-standard ARP packets.
 
@@ -27,9 +27,21 @@ If you get this error when running this module, you might have to `sudo` the com
 >pcap_lookupdev: no suitable device found
 
 
-
 ## Documentation
-_(Coming soon)_
+
+```
+Usage: arpscan [options]
+
+Options:
+
+  -h, --help                   output usage information
+  -V, --version                output the version number
+  -C, --check-arpscan          Test to see if arp-scan is installed
+  -i, --interface [interface]  Interface to scan
+  -v, --verbose                Verbose mode
+
+```
+
 
 ## Examples
 
@@ -92,10 +104,27 @@ The module also provides a `cli` interface:
 $ arpscan
 ```
 
+### Errors
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+If `arpscan` fails, try to run the command manually:
+```
+$ arp-scan -l
+```
+You might get an error similar to this:
 
+>WARNING: Could not obtain IP address for interface fw0. Using 0.0.0.0 for
+the source address, which is probably not what you want.
+Either configure fw0 with an IP address, or manually specify the address
+with the --arpspa option.
+Interface: fw0, datalink type: APPLE_IP_OVER_IEEE1394 (Apple IP-over-IEEE 1394)
+WARNING: Unsupported datalink type
+ERROR: Could not obtain interface IP address and netmask
+ERROR: pcap_lookupnet: fw0: no IPv4 address assigned
+
+You might want to specify which interface to use:
+```
+$ arp-scan -interface en0 --localnet
+```
 
 ## TODO
 - Parse signature metadata
@@ -106,6 +135,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 Ending arp-scan 1.9: 256 hosts scanned in 1.861 seconds (137.56 hosts/sec). 7 responded
 
 ## Release History
+- Version: 0.3.0 2016-11-11 Added interface option
+- Version: 0.2.0 2016-11-10 Added Promise API
 - Version: 0.0.2 2015-03-29
 - Version: 0.0.1 2015-03-29
 
