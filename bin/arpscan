@@ -2,7 +2,7 @@
 
 'use strict';
 
-var scanner = require('../lib/arpscanner');
+var scanner = require('../lib/arpscanner-promise');
 
 var program = require('commander');
 
@@ -22,14 +22,17 @@ function checkArpScan(){
 program
     .version(pck.version)
     .option('-C, --check-arpscan', 'Test to see if arp-scan is installed', checkArpScan)
+    .option('-i, --interface [interface]', 'Interface to scan', 'wlan0')
+    .option('-v, --verbose', 'Verbose mode', false)
     .parse(process.argv);
 
-scanner(function result(err, data){
-    if(err){
-        process.stderr.write(err + '\n');
-    }
-
+scanner({
+    verbose: program.verbose,
+    interface: program.interface,
+    verbose: !!program.verbose,
+}).then(function(data){
     process.stdout.write(JSON.stringify(data) + '\n');
+}).catch(function(err){
+  process.stderr.write(err + '\n');
+  process.exit(1);
 });
-
-
