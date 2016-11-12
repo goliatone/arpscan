@@ -8,8 +8,20 @@ var program = require('commander');
 
 var pck = require('../package.json');
 
+function checkArpScan(){
+    var spawn = require('child_process').spawn;
+    var test = spawn('arp-scan', ['-v']);
+    test.on('error', function(err){
+        console.log(err);
+    });
+    test.on('data', function(data){
+        console.log(data);
+    });
+}
+
 program
     .version(pck.version)
+    .option('-C, --check-arpscan', 'Test to see if arp-scan is installed', checkArpScan)
     .parse(process.argv);
 
 scanner(function result(err, data){
