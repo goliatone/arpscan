@@ -61,7 +61,7 @@ To use the module programmatically with promises:
 ```javascript
 var arpscanner = require('arpscan/promise');
 arpscanner()
-    .then(onResult);
+    .then(onResult)
     .catch(onError);
 
 function onResult(data) {
