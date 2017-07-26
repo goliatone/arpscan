@@ -42,14 +42,12 @@ Options:
 
 ```
 
-
-## Examples
-
 To use the module programmatically:
 
 ```javascript
-var arpscanner = require('arpscan');
-arpscanner(onResult);
+const arpScanner = require('arpscan');
+
+arpScanner(onResult, options);
 
 function onResult(err, data){
     if(err) throw err;
@@ -59,8 +57,9 @@ function onResult(err, data){
 
 To use the module programmatically with promises:
 ```javascript
-var arpscanner = require('arpscan/promise');
-arpscanner()
+var arpScanner = require('arpscan/promise');
+
+arpScanner(options)
     .then(onResult)
     .catch(onError);
 
@@ -72,7 +71,15 @@ function onError(err) {
     throw err;
 }
 ```
+### Options
 
+| Name          | Type     | Description                                          | Default       |
+| ------------- | -------- | ---------------------------------------------------- | ------------- | 
+| **command**   | String   | The command that's used to scan network via ARP.     | `'arp-scan'`  |
+| **args**      | String[] | The args sent to the command.                        | `[ '-l' ]`    |
+| **interface** | String   | The interface that sends the ARP packet.             | `'wlan0'`     |
+| **parser**    | Function | A function called to parse the gathered data.        | `parse`       |
+| **sudo**      | Boolean  | A flag indicating if the command is called via sudo. | `false`       |
 
 The output should be something similar to:
 
