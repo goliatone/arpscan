@@ -1,3 +1,34 @@
 #!/bin/sh
 
-npm version minor && npm publish && npm version patch && git push --tags && git push origin master
+function major {
+    npm version major && npm publish && npm version patch && git push --tags && git push origin master
+}
+
+function minor {
+    npm version minor && npm publish && npm version patch && git push --tags && git push origin master
+}
+
+function patch {
+    npm version patch && npm publish && git push --tags && git push origin master
+}
+
+function help {
+  echo "$0 [<major|minor|patch>]"
+  echo "Publishes package to npm and git."
+  echo "\t1 major"
+  echo "\t4 minor"
+  echo "\t5 patch"
+}
+
+if [ "$1" == "help" ]; then
+  help
+elif output=$(git status --untracked-files=no --porcelain) && [ -z "$output" ]; then
+  # Working directory clean
+  TIMEFORMAT="Published in %3lR"
+  time ${@:-patch}
+else
+  red=`tput setaf 1`
+  reset=`tput sgr0`
+  echo "\t${red}Git working directory not clean."
+  echo "\tCommit your changes and try again.${reset}"
+fi
