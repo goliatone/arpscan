@@ -2,19 +2,29 @@
 
 'use strict';
 
-var scanner = require('../lib/arpscanner').promisify();
+const scanner = require('../lib/arpscanner').promisify();
+const isMac = require('../lib/arpscanner').isMac;
+const program = require('commander');
 
-var program = require('commander');
+const pck = require('../package.json');
 
-var pck = require('../package.json');
+let command = 'arp-scan';
+let args = ['-v'];
+let netInterface = isMac() ? 'en0' : 'wlan0';
 
-function checkArpScan(){
-    var spawn = require('child_process').spawn;
-    var test = spawn('arp-scan', ['-v']);
-    test.on('error', function(err){
+if (isMac()) {
+    command = 'arp';
+    args = ['-a', '-l'];
+}
+
+function checkArpScan() {
+    const spawn = require('child_process').spawn;
+    const test = spawn(command, args);
+
+    test.on('error', function(err) {
         console.log(err);
     });
-    test.on('data', function(data){
+    test.on('data', function(data) {
         console.log(data);
     });
 }
@@ -22,16 +32,18 @@ function checkArpScan(){
 program
     .version(pck.version)
     .option('-C, --check-arpscan', 'Test to see if arp-scan is installed', checkArpScan)
-    .option('-i, --interface [interface]', 'Interface to scan', 'wlan0')
+    .option('-i, --interface [interface]', 'Interface to scan linux wlan0 macos en0', netInterface)
     .option('-v, --verbose', 'Verbose mode', false)
     .parse(process.argv);
 
 scanner({
+    command,
+    args,
     verbose: !!program.verbose,
     interface: program.interface
-}).then(function(data){
+}).then(data => {
     process.stdout.write(JSON.stringify(data) + '\n');
-}).catch(function(err){
-  process.stderr.write(err + '\n');
-  process.exit(1);
+}).catch(err => {
+    process.stderr.write(err + '\n');
+    process.exit(1);
 });
