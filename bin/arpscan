@@ -3,31 +3,12 @@
 'use strict';
 
 const scanner = require('../lib/arpscanner').promisify();
-const isMac = require('../lib/arpscanner').isMac;
 const program = require('commander');
-
+const isMac = require('../lib/arpscanner').isMac;
+const checkArpScan = require('../lib/arpscanner').checkArpScan;
 const pck = require('../package.json');
 
-let command = 'arp-scan';
-let args = ['-v'];
 let netInterface = isMac() ? 'en0' : 'wlan0';
-
-if (isMac()) {
-    command = 'arp';
-    args = ['-a', '-l'];
-}
-
-function checkArpScan() {
-    const spawn = require('child_process').spawn;
-    const test = spawn(command, args);
-
-    test.on('error', function(err) {
-        console.log(err);
-    });
-    test.on('data', function(data) {
-        console.log(data);
-    });
-}
 
 program
     .version(pck.version)
@@ -37,8 +18,6 @@ program
     .parse(process.argv);
 
 scanner({
-    command,
-    args,
     verbose: !!program.verbose,
     interface: program.interface
 }).then(data => {
