@@ -45,8 +45,8 @@
     "networking"
   ],
   "dependencies": {
-    "gextend": "^0.1.6",
     "commander": "^2.7.1",
+    "gextend": "^0.1.6",
     "suspawn": "^0.2.2"
   }
 }
