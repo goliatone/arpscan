@@ -1,0 +1,43 @@
+#!/bin/bash
+PATH=./node_modules/.bin:$PATH
+
+##########################################
+# Publish NPM/Github Tags
+##########################################
+
+function _publish:check {
+    if output=$(git status --untracked-files=no --porcelain) && [ -z "$output" ]; then
+        # Working directory clean
+        echo "Ready to publish..."    
+    else
+        red=`tput setaf 1`
+        reset=`tput sgr0`
+        echo "  ${red}Git working directory not clean."
+        echo "  Commit your changes and try again.${reset}"
+        exit 1
+    fi
+}
+
+function publish:major {
+    _publish:check
+    npm version major && npm publish && npm version patch && git push --tags && git push origin master
+}
+
+function publish:minor {
+    _publish:check
+    npm version minor && npm publish && npm version patch && git push --tags && git push origin master
+}
+
+function publish:patch {
+    _publish:check
+    npm version patch && npm publish && git push --tags && git push origin master
+}
+
+function help {
+    echo "$0 <task> <args>"
+    echo "Tasks:"
+    compgen -A function | grep -v '^_' | cat -n
+}
+
+TIMEFORMAT="Task completed in %3lR"
+time ${@:-help}  
