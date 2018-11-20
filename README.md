@@ -11,15 +11,12 @@ Tested in Mac OSX 10.9.5 and Raspbian GNU/Linux 7 (wheezy).
 ## Getting Started
 First you need to install `arp-scan` if is not already installed.
 
-In Mac you can use **brew**:
-```
-brew install arp-scan
-```
-
 On Debian:
 ```
 sudo apt-get install arp-scan
 ```
+
+In macOS it will use `arp`.
 
 Install the module with: `npm install arpscan`
 
@@ -42,7 +39,7 @@ Options:
 
 ```
 
-To use the module programmatically:
+To use the module from your program:
 
 ```javascript
 const arpScanner = require('arpscan');
@@ -55,7 +52,8 @@ function onResult(err, data){
 }
 ```
 
-To use the module programmatically with promises:
+To use the module from your program with promises:
+
 ```javascript
 var arpScanner = require('arpscan/promise');
 
