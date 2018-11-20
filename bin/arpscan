@@ -32,7 +32,7 @@ function checkArpScan() {
 program
     .version(pck.version)
     .option('-C, --check-arpscan', 'Test to see if arp-scan is installed', checkArpScan)
-    .option('-i, --interface [interface]', 'Interface to scan linux wlan0 macos en0', netInterface)
+    .option('-i, --interface [interface]', 'Interface to scan. Use "none" to ommit interface', netInterface)
     .option('-v, --verbose', 'Verbose mode', false)
     .parse(process.argv);
 
